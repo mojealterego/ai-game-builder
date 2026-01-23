@@ -1,9 +1,9 @@
-name: Build Google Play Production
+name: Production Build Google Play
 on: [push]
 
 jobs:
   build:
-    name: Build AAB (Signed)
+    name: Build AAB
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
