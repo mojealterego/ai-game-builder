@@ -1,9 +1,9 @@
-name: Build Unity Game
+name: Build Google Play Production
 on: [push]
 
 jobs:
   build:
-    name: Build for Android
+    name: Build AAB (Signed)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -22,12 +22,12 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: Android
-          androidAppBundle: false
+          androidAppBundle: true
           androidKeystoreName: user.keystore
           androidKeystorePass: ${{ secrets.KEYSTORE_PASS }}
           androidKeyaliasName: ${{ secrets.KEY_ALIAS }}
           androidKeyaliasPass: ${{ secrets.KEY_ALIAS_PASS }}
       - uses: actions/upload-artifact@v3
         with:
-          name: Game-Android
-          path: build/Android/Android.apk
+          name: GooglePlay-Release
+          path: build/Android/Android.aab
